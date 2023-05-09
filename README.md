@@ -113,7 +113,7 @@ Kriteria selanjutnya adalah web server dapat menampilkan catatan. Kriteria ini m
 }
 ```
 
-- Selain itu, client juga bisa melakukan permintaan untuk mendapatkan catatan secara spesifik menggunakan id melalui path **`/notes/{id}`** dengan method **`GET`**. Server harus mengembalikan status code 200 (ok) serta nilai satu objek catatan dalam bentuk JSON seperti berikut:
+- Selain itu, client juga bisa melakukan permintaan untuk mendapatkan catatan secara spesifik menggunakan id melalui path **`/notes/{id}`** dengan method **`GET`**. Server harus mengembalikan status code **_200 (ok)_** serta nilai satu objek catatan dalam bentuk JSON seperti berikut:
 
 ```
 {
