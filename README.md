@@ -28,9 +28,7 @@ Kriteria pertama adalah web server dapat menyimpan catatan yang ditambahkan mela
 }
 ```
 
-Agar web server dapat menyimpan catatan melalui aplikasi client, web server harus menyediakan route dengan path **/notes** dan method **POST**.
-Dalam menyimpan atau menambahkan notes, client akan mengirimkan permintaan ke path dan
-method tersebut dengan membawa data JSON berikut pada request body:
+- Agar web server dapat menyimpan catatan melalui aplikasi client, web server harus menyediakan route dengan path **`/notes`** dan method **`POST`**. Dalam menyimpan atau menambahkan notes, client akan mengirimkan permintaan ke path dan method tersebut dengan membawa data JSON berikut pada request body:
 
 ```
 {
@@ -43,8 +41,7 @@ method tersebut dengan membawa data JSON berikut pada request body:
 Untuk property `id`, `createdAt`, dan `updatedAt` harus diolah di sisi server,
 jadi client tidak akan mengirimkan itu. Server harus memastikan properti `id` selalu unik.
 
-Jika permintaan client berhasil dilakukan, respons dari server harus memiliki status code **_201 (created)_** dan mengembalikan data dalam
-bentuk JSON dengan format berikut:
+- Jika permintaan client berhasil dilakukan, respons dari server harus memiliki status code **_201 (created)_** dan mengembalikan data dalam bentuk JSON dengan format berikut:
 
 ```
 {
@@ -58,7 +55,7 @@ bentuk JSON dengan format berikut:
 
 Nilai dari properti `noteId` diambil dari properti `id` yang dibuat secara unik.
 
-Bila permintaan gagal dilakukan, berikan status code **_500_** dan kembalikan dengan data JSON dengan format berikut:
+- Bila permintaan gagal dilakukan, berikan status code **_500_** dan kembalikan dengan data JSON dengan format berikut:
 
 ```
 {
@@ -71,7 +68,7 @@ Bila permintaan gagal dilakukan, berikan status code **_500_** dan kembalikan de
 
 Kriteria selanjutnya adalah web server dapat menampilkan catatan. Kriteria ini mengharuskan web server untuk mengirimkan seluruh atau secara spesifik data notes yang disimpan.
 
-Ketika client melakukan permintaan pada path **/notes** dengan method **GET**, maka server harus mengembalikan status code **_200 (ok)_** serta seluruh data notes dalam bentuk array menggunakan JSON. Contohnya seperti ini:
+- Ketika client melakukan permintaan pada path **`/notes`** dengan method **`GET`**, maka server harus mengembalikan status code **_200 (ok)_** serta seluruh data notes dalam bentuk array menggunakan JSON. Contohnya seperti ini:
 
 ```
 {
@@ -105,7 +102,7 @@ Ketika client melakukan permintaan pada path **/notes** dengan method **GET**, m
 }
 ```
 
-Jika belum ada catatan satu pun pada array, server bisa mengembalikan data notes dengan nilai array kosong seperti ini:
+- Jika belum ada catatan satu pun pada array, server bisa mengembalikan data notes dengan nilai array kosong seperti ini:
 
 ```
 {
@@ -116,7 +113,7 @@ Jika belum ada catatan satu pun pada array, server bisa mengembalikan data notes
 }
 ```
 
-Selain itu, client juga bisa melakukan permintaan untuk mendapatkan catatan secara spesifik menggunakan id melalui path **/notes/{id}** dengan method **GET**. Server harus mengembalikan status code 200 (ok) serta nilai satu objek catatan dalam bentuk JSON seperti berikut:
+- Selain itu, client juga bisa melakukan permintaan untuk mendapatkan catatan secara spesifik menggunakan id melalui path **`/notes/{id}`** dengan method **`GET`**. Server harus mengembalikan status code 200 (ok) serta nilai satu objek catatan dalam bentuk JSON seperti berikut:
 
 ```
 {
@@ -137,7 +134,7 @@ Selain itu, client juga bisa melakukan permintaan untuk mendapatkan catatan seca
 }
 ```
 
-Bila client melampirkan `id` catatan yang tidak ditemukan, server harus merespons dengan status code **404**, dan data dalam bentuk JSON seperti ini:
+- Bila client melampirkan `id` catatan yang tidak ditemukan, server harus merespons dengan status code **_404_**, dan data dalam bentuk JSON seperti ini:
 
 ```
 {
@@ -148,7 +145,7 @@ Bila client melampirkan `id` catatan yang tidak ditemukan, server harus merespon
 
 # Kriteria 3 - Web Server dapat mengubah catatan
 
-Kriteria ketiga adalah web server harus dapat mengubah catatan. Perubahan yang dimaksud bisa berupa judul, isi, ataupun tag catatan. Ketika client meminta perubahan catatan, ia akan membuat permintaan ke path **/notes/{id}**, menggunakan method **PUT**, serta membawa data JSON pada body request yang merupakan data catatan terbaru.
+Kriteria ketiga adalah web server harus dapat mengubah catatan. Perubahan yang dimaksud bisa berupa judul, isi, ataupun tag catatan. Ketika client meminta perubahan catatan, ia akan membuat permintaan ke path **`/notes/{id}`**, menggunakan method **`PUT`**, serta membawa data JSON pada body request yang merupakan data catatan terbaru.
 
 ```
 {
@@ -182,7 +179,7 @@ Perubahan data catatan harus disimpan ke catatan yang sesuai dengan `id` yang di
 
 # Kriteria 4 - Web Server dapat menghapus catatan
 
-Kriteria terakhir adalah web server harus bisa menghapus catatan. Untuk menghapus catatan, client akan membuat permintaan pada path **/notes/{id}** dengan method **DELETE**. Ketika permintaan tersebut berhasil, maka server harus mengembalikan status code **_200 (ok)_** serta data JSON berikut:
+Kriteria terakhir adalah web server harus bisa menghapus catatan. Untuk menghapus catatan, client akan membuat permintaan pada path **`/notes/{id}`** dengan method **`DELETE`**. Ketika permintaan tersebut berhasil, maka server harus mengembalikan status code **_200 (ok)_** serta data JSON berikut:
 
 ```
 {
